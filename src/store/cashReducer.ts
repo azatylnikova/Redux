@@ -1,13 +1,24 @@
 const defaultState = {
-  cash: 5
+  count: 0
 };
+
+export const INCREMENT = "INCREMENT";
+export const ASYNC_INCREMENT = "ASYNC_INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const ASYNC_DECREMENT = "ASYNC_DECREMENT";
+
 export const cashReducer = (state: any = defaultState, action: any) => {
   switch (action.type) {
-    case "ADD_CASH":
-      return { ...state, cash: state.cash + action.payload };
-    case "GET_CASH":
-      return { ...state, cash: state.cash - action.payload };
+    case "INCREMENT":
+      return { ...state, count: state.count + 1 };
+    case "DECREMENT":
+      return { ...state, count: state.count - 1 };
     default:
       return state;
   }
 };
+
+export const incrementCreator = () => ({ type: INCREMENT });
+export const asyncIncrementCreator = () => ({ type: ASYNC_INCREMENT });
+export const decrementCreator = () => ({ type: DECREMENT });
+export const asyncDecrementCreator = () => ({ type: ASYNC_DECREMENT });
